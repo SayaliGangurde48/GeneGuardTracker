@@ -33,6 +33,19 @@
   --risk-low: hsl(142, 76%, 47%);
 }
 
+/* Color-blind friendly mode */
+.color-blind-mode {
+  --health-primary: hsl(210, 100%, 50%);
+  --health-secondary: hsl(25, 95%, 53%);
+  --health-accent: hsl(210, 100%, 60%);
+  --risk-high: hsl(25, 95%, 53%);
+  --risk-medium: hsl(45, 100%, 50%);
+  --risk-low: hsl(210, 100%, 50%);
+  --primary: hsl(210, 100%, 50%);
+  --secondary: hsl(25, 95%, 53%);
+  --accent: hsl(210, 100%, 60%);
+}
+
 .dark {
   --background: hsl(240, 10%, 3.9%);
   --foreground: hsl(0, 0%, 98%);

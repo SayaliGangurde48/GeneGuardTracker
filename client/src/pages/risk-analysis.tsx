@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import RiskCharts from "@/components/risk-charts";
+import { useColorBlindStyles } from "@/hooks/use-color-blind-styles";
 import { Shield, Activity, Globe, BarChart3, Brain, TrendingUp } from "lucide-react";
 
 export default function RiskAnalysis() {
@@ -15,6 +16,7 @@ export default function RiskAnalysis() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [currentUserId, setCurrentUserId] = useState<number | null>(null);
+  const { getRiskStyles, getRiskIcon, getPrimaryButtonStyles } = useColorBlindStyles();
 
   useEffect(() => {
     const userId = localStorage.getItem("currentUserId");
@@ -126,12 +128,9 @@ export default function RiskAnalysis() {
                         <div key={assessment.id} className="bg-slate-50 rounded-lg p-4">
                           <div className="flex items-center justify-between mb-2">
                             <span className="font-medium text-slate-900">{assessment.condition}</span>
-                            <Badge className={`text-white ${
-                              assessment.riskLevel === 'high' ? 'bg-red-500' :
-                              assessment.riskLevel === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
-                            }`}>
-                              {assessment.riskLevel.charAt(0).toUpperCase() + assessment.riskLevel.slice(1)}
-                            </Badge>
+                            <span className={getRiskStyles(assessment.riskLevel)}>
+                              {getRiskIcon(assessment.riskLevel)} {assessment.riskLevel.charAt(0).toUpperCase() + assessment.riskLevel.slice(1)}
+                            </span>
                           </div>
                           <div className="w-full bg-slate-200 rounded-full h-2 mb-2">
                             <div 
@@ -167,13 +166,15 @@ export default function RiskAnalysis() {
                     {riskAssessments.slice(0, 3).map((assessment: any) => (
                       <div key={`genetic-${assessment.id}`} className="flex justify-between items-center">
                         <span className="text-sm text-slate-600">{assessment.condition}</span>
-                        <Badge className={`text-white text-xs ${
-                          assessment.factors?.familyHistory > 50 ? 'bg-red-500' :
-                          assessment.factors?.familyHistory > 25 ? 'bg-yellow-500' : 'bg-green-500'
-                        }`}>
+                        <span className={getRiskStyles(
+                          assessment.factors?.familyHistory > 50 ? 'high' :
+                          assessment.factors?.familyHistory > 25 ? 'medium' : 'low'
+                        )}>
+                          {getRiskIcon(assessment.factors?.familyHistory > 50 ? 'high' :
+                           assessment.factors?.familyHistory > 25 ? 'medium' : 'low')} 
                           {assessment.factors?.familyHistory > 50 ? 'High' :
                            assessment.factors?.familyHistory > 25 ? 'Medium' : 'Low'}
-                        </Badge>
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -287,7 +288,7 @@ export default function RiskAnalysis() {
             Back to Family Tree
           </Button>
           <Button 
-            className="bg-health-primary hover:bg-emerald-600"
+            className={getPrimaryButtonStyles()}
             onClick={() => setLocation("/recommendations")}
           >
             View Recommendations

@@ -15,6 +15,8 @@ import Settings from "@/pages/settings";
 import Navigation from "@/components/navigation";
 import AIchatbot from "@/components/ai-chatbot";
 import { I18nProvider } from "./lib/i18n";
+import { ColorBlindProvider } from "@/contexts/color-blind-context";
+import { ColorBlindToggle } from "@/components/color-blind-toggle";
 
 function Router() {
   return (
@@ -36,18 +38,21 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider>
-        <TooltipProvider>
-          <div className="min-h-screen bg-slate-50">
-            <Navigation />
-            <main className="flex-1">
-              <Router />
-            </main>
-            <AIchatbot />
-            <Toaster />
-          </div>
-        </TooltipProvider>
-      </I18nProvider>
+      <ColorBlindProvider>
+        <I18nProvider>
+          <TooltipProvider>
+            <div className="min-h-screen bg-slate-50">
+              <Navigation />
+              <main className="flex-1">
+                <Router />
+              </main>
+              <AIchatbot />
+              <ColorBlindToggle />
+              <Toaster />
+            </div>
+          </TooltipProvider>
+        </I18nProvider>
+      </ColorBlindProvider>
     </QueryClientProvider>
   );
 }
