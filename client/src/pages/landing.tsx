@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
 import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap } from "lucide-react";
-import PedigreeChart from "@/components/pedigree-chart";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
@@ -55,100 +54,111 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="gradient-bg text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                  Track Genetic Risks.<br />
-                  <span className="text-emerald-200">Empower Preventive Health.</span>
-                </h1>
-                <p className="text-xl text-emerald-100 max-w-lg">
-                  Build your family medical history, assess genetic risks using AI, and receive personalized health insights to stay ahead of potential health issues.
-                </p>
+      {/* Navigation Header */}
+      <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                <Shield className="w-5 h-5 text-white" />
               </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg"
-                  className="bg-white text-emerald-600 hover:bg-slate-50 font-semibold shadow-lg"
-                  onClick={() => setLocation("/profile-setup")}
-                >
-                  Get Started Free
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 font-semibold bg-transparent"
-                  onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
-                >
-                  Watch Demo
-                </Button>
-              </div>
-
-              <div className="flex items-center space-x-6 pt-8">
-                {trustIndicators.map((indicator, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <indicator.icon className="w-5 h-5 text-emerald-200" />
-                    <span className="text-sm text-emerald-200">{indicator.text}</span>
-                  </div>
-                ))}
-              </div>
+              <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
             
-            <div className="relative">
-              {/* Interactive Pedigree Chart */}
-              <div className="bg-white rounded-2xl shadow-2xl p-6">
-                <PedigreeChart compact={true} />
-              </div>
-              
-              <div className="absolute -top-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full risk-indicator"></div>
-                  <span className="text-sm font-medium text-slate-700">Low Risk</span>
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <button onClick={() => setLocation("/")} className="text-slate-700 hover:text-emerald-600 font-medium">Home</button>
+              <button onClick={() => setLocation("/profile-setup")} className="text-slate-700 hover:text-emerald-600 font-medium">Profile</button>
+              <button onClick={() => setLocation("/family-tree")} className="text-slate-700 hover:text-emerald-600 font-medium">Family Tree</button>
+              <button onClick={() => setLocation("/risk-analysis")} className="text-slate-700 hover:text-emerald-600 font-medium">Risk Analysis</button>
+              <button onClick={() => setLocation("/recommendations")} className="text-slate-700 hover:text-emerald-600 font-medium">Recommendations</button>
+              <button onClick={() => setLocation("/health-passport")} className="text-slate-700 hover:text-emerald-600 font-medium">Health Passport</button>
+              <button onClick={() => setLocation("/settings")} className="text-slate-700 hover:text-emerald-600 font-medium">Settings</button>
+            </div>
+            
+            {/* Language Selector */}
+            <div className="flex items-center space-x-4">
+              <select className="text-sm bg-transparent border-none text-slate-700">
+                <option>English</option>
+                <option>Hindi</option>
+                <option>Bengali</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 flex items-center pt-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-8">
+            {/* Main Heading */}
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight text-slate-900">
+                Track Genetic Risks.<br />
+                <span className="text-emerald-600">Empower Preventive Health.</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Build your family medical history, assess genetic risks with AI, and receive personalized 
+                health insights to stay ahead of potential health challenges.
+              </p>
+            </div>
+            
+            {/* CTA Button */}
+            <div className="pt-8">
+              <Button 
+                size="lg"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-12 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                onClick={() => setLocation("/profile-setup")}
+              >
+                Get Started
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="flex items-center justify-center space-x-8 pt-12 text-slate-500">
+              {trustIndicators.map((indicator, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <indicator.icon className="w-5 h-5" />
+                  <span className="text-sm font-medium">{indicator.text}</span>
                 </div>
-              </div>
-              
-              <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
-                <div className="flex items-center space-x-3">
-                  <Users className="w-8 h-8 text-emerald-600" />
-                  <div>
-                    <div className="text-sm font-medium text-slate-700">Family Tree</div>
-                    <div className="text-xs text-slate-500">8 members analyzed</div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Comprehensive Genetic Health Tracking
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Comprehensive Health Risk Management
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
               From family tree building to AI-powered risk analysis, GeneGuard provides everything you need for proactive health management.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-slate-50 card-hover border-0">
+              <Card key={index} className="bg-white hover:shadow-xl transition-all duration-300 border-0 shadow-lg group">
                 <CardContent className="p-8">
-                  <div className="w-12 h-12 bg-health-primary rounded-lg flex items-center justify-center mb-6">
-                    <feature.icon className="w-6 h-6 text-white" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-3">{feature.title}</h3>
-                  <p className="text-slate-600 mb-4">{feature.description}</p>
-                  <ul className="text-sm text-slate-500 space-y-1">
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">{feature.title}</h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">{feature.description}</p>
+                  <ul className="space-y-3">
                     {feature.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>• {item}</li>
+                      <li key={itemIndex} className="flex items-start text-slate-700">
+                        <CheckCircle className="w-5 h-5 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="font-medium">{item}</span>
+                      </li>
                     ))}
                   </ul>
                 </CardContent>
@@ -159,20 +169,23 @@ export default function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-24 bg-gradient-to-br from-emerald-600 to-emerald-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Take Control of Your Health?
           </h2>
-          <p className="text-xl text-slate-600 mb-8">
+          <p className="text-xl text-emerald-100 mb-10 leading-relaxed">
             Start building your family medical history and get personalized health insights today.
           </p>
           <Button 
             size="lg"
-            className="bg-health-primary hover:bg-emerald-600 text-white font-semibold px-8 py-4"
+            className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold px-12 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             onClick={() => setLocation("/profile-setup")}
           >
             Begin Your Health Journey
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </Button>
         </div>
       </section>

@@ -4,6 +4,16 @@
 
 GeneGuard is a full-stack web application designed to help users build family medical history trees, assess genetic risks using AI logic, and generate comprehensive health reports. The application provides an intuitive interface for tracking family health data and offers personalized recommendations based on genetic risk analysis.
 
+## Recent Changes (January 2025)
+
+✓ Updated landing page with modern, clean design matching user specifications
+✓ Removed Watch Demo button and family tree preview from homepage
+✓ Added functional navigation header with all app sections
+✓ Integrated Google Gemini AI for advanced genetic risk analysis
+✓ Enhanced lifestyle factors with detailed metrics (diet quality, stress level, sleep quality, alcohol consumption)
+✓ Created AI Analysis component with risk breakdowns and visual indicators
+✓ Maintained color-blind accessibility features throughout the application
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
