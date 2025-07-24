@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
 import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap } from "lucide-react";
+import PedigreeChart from "@/components/pedigree-chart";
+import { ColorBlindToggle } from "@/components/color-blind-toggle";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
@@ -90,43 +92,77 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 flex items-center pt-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-8">
-            {/* Main Heading */}
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight text-slate-900">
-                Track Genetic Risks.<br />
-                <span className="text-emerald-600">Empower Preventive Health.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Build your family medical history, assess genetic risks with AI, and receive personalized 
-                health insights to stay ahead of potential health challenges.
-              </p>
+      <section className="min-h-screen bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white pt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                  Track Genetic Risks.<br />
+                  <span className="text-emerald-100">Empower Preventive Health.</span>
+                </h1>
+                <p className="text-xl text-white/90 max-w-lg leading-relaxed">
+                  Build your family medical history, assess genetic risks using AI, and receive personalized health insights to stay ahead of potential health issues.
+                </p>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  size="lg"
+                  className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold px-8"
+                  onClick={() => setLocation("/profile-setup")}
+                >
+                  Get Started Free
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 font-semibold bg-transparent"
+                  onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
+                >
+                  Watch Demo
+                </Button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex items-center space-x-6 pt-8">
+                {trustIndicators.map((indicator, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <indicator.icon className="w-5 h-5 text-emerald-200" />
+                    <span className="text-sm text-emerald-200">{indicator.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
             
-            {/* CTA Button */}
-            <div className="pt-8">
-              <Button 
-                size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-12 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                onClick={() => setLocation("/profile-setup")}
-              >
-                Get Started
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Button>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="flex items-center justify-center space-x-8 pt-12 text-slate-500">
-              {trustIndicators.map((indicator, index) => (
-                <div key={index} className="flex items-center space-x-2">
-                  <indicator.icon className="w-5 h-5" />
-                  <span className="text-sm font-medium">{indicator.text}</span>
+            <div className="relative">
+              {/* Family Tree Preview Card */}
+              <div className="bg-white rounded-2xl shadow-2xl p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span className="text-sm font-medium text-slate-700">Low Risk</span>
+                  </div>
+                  <Badge variant="outline" className="text-xs">
+                    8 members
+                  </Badge>
                 </div>
-              ))}
+                
+                <h3 className="font-semibold text-gray-900 flex items-center space-x-2 mb-4">
+                  <Users className="w-4 h-4" />
+                  <span>Family Tree Preview</span>
+                </h3>
+                
+                <PedigreeChart compact={true} />
+                
+                <div className="mt-4 flex items-center space-x-2 text-sm text-slate-600">
+                  <Users className="w-4 h-4 text-emerald-600" />
+                  <span>Family Tree</span>
+                  <span className="text-slate-400">•</span>
+                  <span>8 members analyzed</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -242,6 +278,11 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* Color Blind Mode Toggle */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <ColorBlindToggle />
+      </div>
     </div>
   );
 }
