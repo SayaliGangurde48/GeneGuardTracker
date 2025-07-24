@@ -15,8 +15,11 @@ export const users = pgTable("users", {
     smokingStatus: string;
     exerciseLevel: string;
     dietType: string;
+    dietQuality: string;
     stressLevel?: string;
     sleepQuality?: string;
+    alcoholConsumption?: string;
+    physicalActivity?: string;
   }>(),
   createdAt: timestamp("created_at").defaultNow(),
 });

@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import RiskCharts from "@/components/risk-charts";
+import AIRiskAnalysis from "@/components/ai-risk-analysis";
 import { useColorBlindStyles } from "@/hooks/use-color-blind-styles";
 import { Shield, Activity, Globe, BarChart3, Brain, TrendingUp } from "lucide-react";
 
@@ -96,16 +97,13 @@ export default function RiskAnalysis() {
           <p className="text-slate-600 max-w-2xl">Based on your family medical history and lifestyle factors, here's your personalized risk analysis.</p>
         </div>
 
-        {isLoading || calculateRisksMutation.isPending ? (
-          <Card className="mb-8">
-            <CardContent className="p-8">
-              <div className="flex items-center justify-center space-x-3">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-health-primary"></div>
-                <span className="text-slate-600">Calculating your genetic risks...</span>
-              </div>
-            </CardContent>
-          </Card>
-        ) : (
+        {/* AI Risk Analysis Component */}
+        <AIRiskAnalysis 
+          riskAssessments={riskAssessments} 
+          isLoading={isLoading || calculateRisksMutation.isPending} 
+        />
+
+        {!isLoading && !calculateRisksMutation.isPending && riskAssessments.length > 0 && (
           <>
             {/* Overall Risk Summary */}
             <Card className="shadow-lg mb-8">

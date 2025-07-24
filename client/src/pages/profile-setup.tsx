@@ -28,7 +28,12 @@ export default function ProfileSetup() {
     lifestyle: {
       smokingStatus: "never",
       exerciseLevel: "moderate",
-      dietType: "balanced"
+      dietType: "balanced",
+      dietQuality: "good",
+      stressLevel: "moderate",
+      sleepQuality: "good",
+      alcoholConsumption: "moderate",
+      physicalActivity: "moderate",
     }
   });
 
@@ -256,6 +261,92 @@ export default function ProfileSetup() {
                         <SelectItem value="vegan">Vegan</SelectItem>
                         <SelectItem value="keto">Keto</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                
+                {/* Additional Lifestyle Factors */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label>Diet Quality</Label>
+                    <Select 
+                      value={formData.lifestyle.dietQuality} 
+                      onValueChange={(value) => setFormData(prev => ({ 
+                        ...prev, 
+                        lifestyle: { ...prev.lifestyle, dietQuality: value }
+                      }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="poor">Poor (processed foods, high sugar)</SelectItem>
+                        <SelectItem value="fair">Fair (some healthy choices)</SelectItem>
+                        <SelectItem value="good">Good (mostly healthy foods)</SelectItem>
+                        <SelectItem value="excellent">Excellent (whole foods, balanced)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Stress Level</Label>
+                    <Select 
+                      value={formData.lifestyle.stressLevel} 
+                      onValueChange={(value) => setFormData(prev => ({ 
+                        ...prev, 
+                        lifestyle: { ...prev.lifestyle, stressLevel: value }
+                      }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="low">Low (rarely stressed)</SelectItem>
+                        <SelectItem value="moderate">Moderate (occasional stress)</SelectItem>
+                        <SelectItem value="high">High (frequent stress)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Sleep Quality</Label>
+                    <Select 
+                      value={formData.lifestyle.sleepQuality} 
+                      onValueChange={(value) => setFormData(prev => ({ 
+                        ...prev, 
+                        lifestyle: { ...prev.lifestyle, sleepQuality: value }
+                      }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="poor">Poor (less than 6 hours)</SelectItem>
+                        <SelectItem value="fair">Fair (6-7 hours)</SelectItem>
+                        <SelectItem value="good">Good (7-8 hours)</SelectItem>
+                        <SelectItem value="excellent">Excellent (8+ hours, restful)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Alcohol Consumption</Label>
+                    <Select 
+                      value={formData.lifestyle.alcoholConsumption} 
+                      onValueChange={(value) => setFormData(prev => ({ 
+                        ...prev, 
+                        lifestyle: { ...prev.lifestyle, alcoholConsumption: value }
+                      }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="none">None</SelectItem>
+                        <SelectItem value="light">Light (1-2 drinks/week)</SelectItem>
+                        <SelectItem value="moderate">Moderate (3-7 drinks/week)</SelectItem>
+                        <SelectItem value="heavy">Heavy (8+ drinks/week)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

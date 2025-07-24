@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
 import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap } from "lucide-react";
+import PedigreeChart from "@/components/pedigree-chart";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
@@ -80,7 +81,8 @@ export default function Landing() {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 font-semibold"
+                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 font-semibold bg-transparent"
+                  onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
                 >
                   Watch Demo
                 </Button>
@@ -97,11 +99,10 @@ export default function Landing() {
             </div>
             
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Medical consultation with digital health technology" 
-                className="rounded-2xl shadow-2xl w-full h-auto" 
-              />
+              {/* Interactive Pedigree Chart */}
+              <div className="bg-white rounded-2xl shadow-2xl p-6">
+                <PedigreeChart compact={true} />
+              </div>
               
               <div className="absolute -top-4 -right-4 bg-white p-4 rounded-lg shadow-lg">
                 <div className="flex items-center space-x-2">
@@ -112,10 +113,10 @@ export default function Landing() {
               
               <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-lg shadow-lg">
                 <div className="flex items-center space-x-3">
-                  <BarChart3 className="w-8 h-8 text-emerald-600" />
+                  <Users className="w-8 h-8 text-emerald-600" />
                   <div>
-                    <div className="text-sm font-medium text-slate-700">Family Analysis</div>
-                    <div className="text-xs text-slate-500">12 members tracked</div>
+                    <div className="text-sm font-medium text-slate-700">Family Tree</div>
+                    <div className="text-xs text-slate-500">8 members analyzed</div>
                   </div>
                 </div>
               </div>
