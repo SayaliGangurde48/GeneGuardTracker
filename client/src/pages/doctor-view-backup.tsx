@@ -37,6 +37,7 @@ export default function DoctorView() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
+                <Logo />
                 <span className="text-xl font-bold text-slate-900">GeneGuard</span>
               </div>
               <div className="text-sm text-slate-600">Doctor Portal</div>
@@ -83,6 +84,7 @@ export default function DoctorView() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
+                <Logo />
                 <span className="text-xl font-bold text-slate-900">GeneGuard</span>
               </div>
               <div className="text-sm text-slate-600">Doctor Portal</div>
@@ -112,6 +114,7 @@ export default function DoctorView() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
+                <Logo />
                 <span className="text-xl font-bold text-slate-900">GeneGuard</span>
               </div>
               <div className="text-sm text-slate-600">Doctor Portal</div>
@@ -149,6 +152,7 @@ export default function DoctorView() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
+              <Logo />
               <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
             <div className="text-sm text-slate-600">Doctor Portal - {user?.name}</div>
@@ -188,116 +192,139 @@ export default function DoctorView() {
                     <div className="flex items-center space-x-4 text-slate-600 mt-1">
                       <span>{user?.gender?.charAt(0).toUpperCase() + user?.gender?.slice(1)}</span>
                       <span>•</span>
-                      <span>{user?.age} years old</span>
+                      <span>Age: {user?.age}</span>
                       <span>•</span>
-                      <span>ID: {user?.id}</span>
+                      <span>ID: {passport?.passportId}</span>
                     </div>
-                    <div className="mt-3">
-                      <h3 className="font-medium text-slate-900 mb-2">Current Medical Conditions</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {user?.medicalConditions?.length > 0 ? (
-                          user.medicalConditions.map((condition: string, index: number) => (
-                            <Badge key={index} className="bg-red-100 text-red-800 border-red-300">
-                              {condition}
-                            </Badge>
-                          ))
-                        ) : (
-                          <span className="text-slate-500 text-sm">No current medical conditions reported</span>
-                        )}
-                      </div>
-                    </div>
+                    <p className="text-sm text-slate-500 mt-2">
+                      Report Generated: {new Date(passport?.lastGenerated).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="lg:col-span-1">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-health-primary mb-2">
-                    {Math.round(riskAssessments.reduce((sum: number, r: any) => sum + r.riskScore, 0) / riskAssessments.length) || 0}%
-                  </div>
-                  <div className="text-sm text-slate-600 mb-4">Overall Risk Score</div>
-                  <Badge className={`${
-                    highRiskConditions.length > 2 ? 'bg-red-500' :
-                    highRiskConditions.length > 0 ? 'bg-yellow-500' : 'bg-green-500'
-                  } text-white`}>
-                    {highRiskConditions.length > 2 ? 'High Risk' :
-                     highRiskConditions.length > 0 ? 'Medium Risk' : 'Low Risk'}
-                  </Badge>
-                </div>
+              <div className="flex justify-center items-center">
+                {passport?.shareableLink && (
+                  <QRCodeSVG value={passport.shareableLink} size={80} className="border border-slate-200 rounded" />
+                )}
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* High-Risk Conditions Alert */}
+        {/* Alert Section for High Risks */}
         {highRiskConditions.length > 0 && (
           <Card className="mb-8 border-red-200 bg-red-50">
-            <CardContent className="p-6">
-              <div className="flex items-start space-x-4">
-                <AlertTriangle className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="text-lg font-semibold text-red-900 mb-2">High-Risk Conditions Identified</h3>
-                  <div className="space-y-3">
-                    {highRiskConditions.map((condition: any) => (
-                      <div key={condition.id} className="bg-white p-4 rounded-lg border border-red-200">
-                        <div className="flex justify-between items-start mb-2">
-                          <h4 className="font-medium text-red-900">{condition.condition}</h4>
-                          <Badge className="bg-red-500 text-white">
-                            {condition.riskScore}% Risk
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-red-800">{condition.reasoning}</p>
-                      </div>
-                    ))}
+            <CardHeader className="pb-3">
+              <CardTitle className="text-red-800 flex items-center space-x-2">
+                <AlertTriangle className="w-5 h-5" />
+                <span>High-Risk Conditions Requiring Attention</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {highRiskConditions.map((condition: any) => (
+                  <div key={condition.id} className="bg-white p-4 rounded-lg border border-red-200">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-semibold text-slate-900">{condition.condition}</h4>
+                      <Badge className="bg-red-500 text-white">
+                        {condition.riskScore}% Risk
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-slate-600">{condition.reasoning}</p>
                   </div>
-                </div>
+                ))}
               </div>
             </CardContent>
           </Card>
         )}
 
-        {/* Family History */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Heart className="w-5 h-5 text-red-500" />
-              <span>Family Medical History</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {familyMembers.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {familyMembers.map((member: any) => (
-                  <div key={member.id} className="bg-slate-50 p-4 rounded-lg">
-                    <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <h4 className="font-medium text-slate-900">{member.name}</h4>
-                        <p className="text-sm text-slate-600">{member.relation} • {member.gender} {member.age && `• ${member.age} years`}</p>
-                      </div>
-                      {member.isDeceased && (
-                        <Badge className="bg-slate-500 text-white text-xs">Deceased</Badge>
-                      )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Risk Assessment Overview */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Heart className="w-5 h-5 text-red-500" />
+                <span>Genetic Risk Assessment</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {riskAssessments.map((assessment: any) => (
+                  <div key={assessment.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                    <div>
+                      <h4 className="font-medium text-slate-900">{assessment.condition}</h4>
+                      <p className="text-sm text-slate-600">
+                        Family History Impact: {assessment.factors?.familyHistory || 0}%
+                      </p>
                     </div>
-                    {member.medicalConditions?.length > 0 && (
-                      <div className="mt-2">
-                        <div className="flex flex-wrap gap-1">
-                          {member.medicalConditions.map((condition: string, index: number) => (
-                            <Badge key={index} className="bg-orange-100 text-orange-800 text-xs">
+                    <div className="text-right">
+                      <Badge className={`mb-1 ${
+                        assessment.riskLevel === 'high' ? 'bg-red-500' :
+                        assessment.riskLevel === 'medium' ? 'bg-yellow-500' : 'bg-green-500'
+                      } text-white`}>
+                        {assessment.riskLevel.toUpperCase()}
+                      </Badge>
+                      <div className="text-sm font-semibold">{assessment.riskScore}%</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Family Medical History */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <User className="w-5 h-5 text-blue-500" />
+                <span>Family Medical History</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {familyMembers.slice(0, 6).map((member: any) => (
+                  <div key={member.id} className="flex items-start space-x-3 p-3 bg-slate-50 rounded-lg">
+                    <div className="w-8 h-8 bg-health-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <h4 className="font-medium text-slate-900">{member.name}</h4>
+                        <span className="text-sm text-slate-500 capitalize">
+                          {member.relation.replace(/_/g, ' ')}
+                        </span>
+                      </div>
+                      <p className="text-sm text-slate-600">
+                        Age: {member.age || 'Unknown'}
+                        {member.isDeceased && ' (Deceased)'}
+                      </p>
+                      {member.medicalConditions?.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mt-2">
+                          {member.medicalConditions.map((condition: string, idx: number) => (
+                            <Badge key={idx} variant="outline" className="text-xs">
                               {condition}
                             </Badge>
                           ))}
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
                 ))}
+                {familyMembers.length === 0 && (
+                  <p className="text-sm text-slate-500 italic text-center py-4">
+                    No family medical history recorded
+                  </p>
+                )}
               </div>
-            ) : (
-              <p className="text-center text-slate-500 py-8">
-                No family medical history available.
-              </p>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Recommendations for Healthcare Provider */}
         <Card className="mb-8">
