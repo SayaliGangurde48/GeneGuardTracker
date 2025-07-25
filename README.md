@@ -4,12 +4,12 @@
 
 <table width="100%">
   <tr>
-    <td align="left">
+    <td width="25%">
+      <img src="https://github.com/SayaliGangurde48/GeneGuardTracker/blob/main/GeneguardLOGO.png?raw=true" alt="GeneGuard Logo" width="100%"/>
+    </td>
+    <td align="left" style="vertical-align: middle;">
       <h1>🧬 GeneGuard</h1>
       <p><strong>Predict. Plan. Protect.</strong></p>
-    </td>
-    <td align="right">
-      <img src="https://github.com/SayaliGangurde48/GeneGuardTracker/blob/main/GeneguardLOGO.png?raw=true" alt="GeneGuard Logo" width="100"/>
     </td>
   </tr>
 </table>
