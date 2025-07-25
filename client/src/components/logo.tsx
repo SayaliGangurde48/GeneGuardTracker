@@ -4,39 +4,31 @@ export default function Logo() {
       <svg 
         viewBox="0 0 24 24" 
         className="w-5 h-5 text-white"
-        fill="currentColor"
+        fill="none"
       >
-        {/* Shield with DNA */}
-        <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" 
-              fill="currentColor" />
+        {/* Shield outline */}
+        <path d="M12 2L4 6V10C4 16 7.36 21.09 12 22C16.64 21.09 20 16 20 10V6L12 2Z" 
+              stroke="white" 
+              strokeWidth="1.5" 
+              fill="rgba(255,255,255,0.1)"/>
         
-        {/* Inner shield highlight */}
-        <path d="M12 2.5L5 5.5V11C5 15.5 7.91 19.64 12 20.5C16.09 19.64 19 15.5 19 11V5.5L12 2.5Z" 
-              fill="rgba(255,255,255,0.2)" />
-        
-        {/* DNA helix pattern */}
-        <g transform="translate(12,12)" fill="rgba(255,255,255,0.9)">
-          {/* DNA base pairs */}
-          <circle cx="-1.5" cy="-3" r="0.6"/>
-          <circle cx="1.5" cy="-3" r="0.6"/>
-          <circle cx="0" cy="-1" r="0.6"/>
-          <circle cx="0" cy="1" r="0.6"/>
-          <circle cx="-1.5" cy="3" r="0.6"/>
-          <circle cx="1.5" cy="3" r="0.6"/>
+        {/* DNA Helix inside shield */}
+        <g transform="translate(12,12)" stroke="white" strokeWidth="1" fill="white">
+          {/* DNA strands */}
+          <path d="M-2,-4 Q0,-2 2,0 Q0,2 -2,4" fill="none" strokeWidth="0.8"/>
+          <path d="M2,-4 Q0,-2 -2,0 Q0,2 2,4" fill="none" strokeWidth="0.8"/>
+          
+          {/* Base pairs */}
+          <circle cx="-1.5" cy="-3" r="0.5"/>
+          <circle cx="1.5" cy="-3" r="0.5"/>
+          <circle cx="0" cy="-1" r="0.5"/>
+          <circle cx="0" cy="1" r="0.5"/>
+          <circle cx="-1.5" cy="3" r="0.5"/>
+          <circle cx="1.5" cy="3" r="0.5"/>
           
           {/* Connecting lines */}
-          <line x1="-1.5" y1="-3" x2="1.5" y2="-3" stroke="rgba(255,255,255,0.7)" strokeWidth="0.4"/>
-          <line x1="-1.5" y1="3" x2="1.5" y2="3" stroke="rgba(255,255,255,0.7)" strokeWidth="0.4"/>
-          
-          {/* Helix curves */}
-          <path d="M-1.5,-3 Q0,-2 0,-1 Q0,0 0,1 Q0,2 1.5,3" 
-                stroke="rgba(255,255,255,0.6)" 
-                strokeWidth="0.3" 
-                fill="none"/>
-          <path d="M1.5,-3 Q0,-2 0,-1 Q0,0 0,1 Q0,2 -1.5,3" 
-                stroke="rgba(255,255,255,0.6)" 
-                strokeWidth="0.3" 
-                fill="none"/>
+          <line x1="-1.5" y1="-3" x2="1.5" y2="-3" strokeWidth="0.5"/>
+          <line x1="-1.5" y1="3" x2="1.5" y2="3" strokeWidth="0.5"/>
         </g>
       </svg>
     </div>
