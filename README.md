@@ -1,61 +1,47 @@
 # 🧬 GeneGuard
 
-> Predict. Plan. Protect.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/<your-username>/<your-repo>/main/assets/dna.gif" alt="DNA Animation" width="600"/>
-</p>
-
----
+> **Predict. Plan. Protect.**
 
 <table>
   <tr>
-    <td width="100">
-      <img src="https://raw.githubusercontent.com/<your-username>/<your-repo>/main/assets/geneguard-logo.png" alt="GeneGuard Logo" width="100"/>
+    <td width="150">
+      <img src="assets/geneguard-logo.png" alt="GeneGuard Logo" width="140" />
     </td>
     <td>
-      <h2>🧬 <strong>GeneGuard</strong></h2>
+      <h1>GeneGuard</h1>
       <p><strong>Predict. Plan. Protect.</strong></p>
     </td>
   </tr>
 </table>
 
+<p align="center">
+  <img src="assets/dna.gif" alt="DNA Animation" width="100%"/>
+</p>
+
 ---
 
 ### 🌟 About GeneGuard
 
-**GeneGuard** is an intelligent health-tech platform designed to revolutionize how individuals approach their genetic health. By combining AI with personal and family medical history, GeneGuard helps users **anticipate, understand, and mitigate** potential genetic health risks before symptoms appear.
+**GeneGuard** is a smart, AI-powered health-tech platform that enables individuals to proactively manage their genetic health by analyzing multi-generational family history and lifestyle patterns.
 
-#### 🎯 Purpose
-GeneGuard empowers users with knowledge about their inherited health risks—allowing them to take early and proactive steps to manage their well-being. Whether it's a predisposition to chronic conditions like diabetes, heart disease, or certain cancers, GeneGuard enables informed decision-making for healthier living.
+#### 🚀 Why GeneGuard?
 
-#### 👥 Who It's For
-- Individuals with a family history of genetic diseases
-- People in rural or underserved areas with limited access to genetic counseling
-- Healthcare providers and genetic counselors seeking decision support tools
-- Preventive health-conscious users wanting to understand their long-term risks
+- **Early Detection:** Identify predispositions to genetic diseases like diabetes, cancer, and cardiovascular conditions.
+- **Empowered Decisions:** Receive tailored lifestyle and health recommendations based on predictive analytics.
+- **Accessible Anywhere:** Especially useful in underserved regions with limited access to specialists.
+- **Secure & Private:** Built with strong encryption and privacy-first architecture.
 
-#### ⚙️ Key Features
-- 🧠 **AI-Powered Risk Prediction**: Analyzes family history and lifestyle data to predict likelihood of hereditary diseases.
-- 📊 **Personalized Health Reports**: Generates easy-to-understand reports outlining risk levels and prevention strategies.
-- 🧬 **Multi-generational Health Mapping**: Supports entering data from multiple generations to enhance prediction accuracy.
-- 🛡️ **Privacy-First Design**: User data is encrypted and never shared without consent.
-- 🌍 **Remote Accessibility**: Designed to be accessible in rural or low-connectivity regions via lightweight deployment.
+#### 🔍 Key Capabilities
 
-#### 🚀 Future Vision
-GeneGuard aims to integrate:
-- Real-time genetic screening support
-- Integration with EHR systems (Electronic Health Records)
-- Predictive models using genomic datasets (with user consent)
-- In-app virtual counseling from certified professionals
+- 🧠 **AI-Driven Risk Models**
+- 🧬 **Multi-generational Health Mapping**
+- 📋 **Personalized Reports**
+- 🌐 **Remote Health Monitoring**
 
-GeneGuard isn't just a tool—it's a step toward **equitable, proactive healthcare for everyone**, regardless of location or resources.
+#### 🌍 Real-World Impact
+
+- Rural communities gain early insights into chronic diseases.
+- Families track inherited risks for future generations.
+- Individuals make informed choices with confidence.
 
 ---
-
-### 🌐 Live Demo
-
-🔗 [View Live Prototype](https://your-demo-link.com)
-
----
-
