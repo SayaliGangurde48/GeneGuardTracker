@@ -11,6 +11,7 @@ import RiskCharts from "@/components/risk-charts";
 import AIRiskAnalysis from "@/components/ai-risk-analysis";
 import { useColorBlindStyles } from "@/hooks/use-color-blind-styles";
 import { Shield, Activity, Globe, BarChart3, Brain, TrendingUp } from "lucide-react";
+import Logo from "@/components/logo";
 
 
 export default function RiskAnalysis() {
@@ -88,6 +89,7 @@ export default function RiskAnalysis() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
+              <Logo />
               <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
             <div className="text-sm text-slate-600">Risk Analysis</div>

@@ -1,41 +1,43 @@
-interface LogoProps {
-  size?: "sm" | "md" | "lg";
-  className?: string;
-}
-
-export default function Logo({ size = "md", className = "" }: LogoProps) {
-  const sizeClasses = {
-    sm: "w-8 h-8",
-    md: "w-10 h-10", 
-    lg: "w-12 h-12"
-  };
-
-  const svgSizes = {
-    sm: "w-5 h-5",
-    md: "w-7 h-7",
-    lg: "w-8 h-8"
-  };
-
+export default function Logo() {
   return (
-    <div className={`${sizeClasses[size]} rounded-lg flex items-center justify-center bg-gradient-to-br from-emerald-500 via-teal-500 to-blue-500 shadow-lg ${className}`}>
-      <svg className={svgSizes[size]} viewBox="0 0 24 24" fill="none">
-        {/* Shield outline */}
-        <path d="M12 2L4 6V10C4 16 7.36 21.09 12 22C16.64 21.09 20 16 20 10V6L12 2Z" 
-              stroke="white" strokeWidth="1.5" fill="rgba(255,255,255,0.1)"/>
-        {/* DNA Helix */}
-        <path d="M9 8C9 8 10.5 9.5 12 8C13.5 6.5 15 8 15 8" 
-              stroke="white" strokeWidth="1.2" fill="none"/>
-        <path d="M9 12C9 12 10.5 10.5 12 12C13.5 13.5 15 12 15 12" 
-              stroke="white" strokeWidth="1.2" fill="none"/>
-        <path d="M9 16C9 16 10.5 17.5 12 16C13.5 14.5 15 16 15 16" 
-              stroke="white" strokeWidth="1.2" fill="none"/>
-        {/* DNA Base pairs */}
-        <circle cx="10" cy="8" r="0.8" fill="white"/>
-        <circle cx="14" cy="8" r="0.8" fill="white"/>
-        <circle cx="10" cy="12" r="0.8" fill="white"/>
-        <circle cx="14" cy="12" r="0.8" fill="white"/>
-        <circle cx="10" cy="16" r="0.8" fill="white"/>
-        <circle cx="14" cy="16" r="0.8" fill="white"/>
+    <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-lg flex items-center justify-center shadow-sm">
+      <svg 
+        viewBox="0 0 24 24" 
+        className="w-5 h-5 text-white"
+        fill="currentColor"
+      >
+        {/* Shield with DNA */}
+        <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" 
+              fill="currentColor" />
+        
+        {/* Inner shield highlight */}
+        <path d="M12 2.5L5 5.5V11C5 15.5 7.91 19.64 12 20.5C16.09 19.64 19 15.5 19 11V5.5L12 2.5Z" 
+              fill="rgba(255,255,255,0.2)" />
+        
+        {/* DNA helix pattern */}
+        <g transform="translate(12,12)" fill="rgba(255,255,255,0.9)">
+          {/* DNA base pairs */}
+          <circle cx="-1.5" cy="-3" r="0.6"/>
+          <circle cx="1.5" cy="-3" r="0.6"/>
+          <circle cx="0" cy="-1" r="0.6"/>
+          <circle cx="0" cy="1" r="0.6"/>
+          <circle cx="-1.5" cy="3" r="0.6"/>
+          <circle cx="1.5" cy="3" r="0.6"/>
+          
+          {/* Connecting lines */}
+          <line x1="-1.5" y1="-3" x2="1.5" y2="-3" stroke="rgba(255,255,255,0.7)" strokeWidth="0.4"/>
+          <line x1="-1.5" y1="3" x2="1.5" y2="3" stroke="rgba(255,255,255,0.7)" strokeWidth="0.4"/>
+          
+          {/* Helix curves */}
+          <path d="M-1.5,-3 Q0,-2 0,-1 Q0,0 0,1 Q0,2 1.5,3" 
+                stroke="rgba(255,255,255,0.6)" 
+                strokeWidth="0.3" 
+                fill="none"/>
+          <path d="M1.5,-3 Q0,-2 0,-1 Q0,0 0,1 Q0,2 -1.5,3" 
+                stroke="rgba(255,255,255,0.6)" 
+                strokeWidth="0.3" 
+                fill="none"/>
+        </g>
       </svg>
     </div>
   );
