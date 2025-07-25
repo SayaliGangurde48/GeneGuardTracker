@@ -12,7 +12,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useI18n } from "@/lib/i18n";
-import Logo from "@/components/logo";
 
 
 export default function ProfileSetup() {
@@ -103,7 +102,6 @@ export default function ProfileSetup() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
-              <Logo />
               <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
             <div className="text-sm text-slate-600">Profile Setup</div>
