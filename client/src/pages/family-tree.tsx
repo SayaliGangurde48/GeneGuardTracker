@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import Logo from "@/components/logo";
 
 export default function FamilyTree() {
   const [, setLocation] = useLocation();
@@ -132,8 +133,22 @@ export default function FamilyTree() {
   }
 
   return (
-    <div className="min-h-screen bg-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white">
+      {/* Navigation Header */}
+      <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-2">
+              <Logo />
+              <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+            </div>
+            <div className="text-sm text-slate-600">Family Tree Builder</div>
+          </div>
+        </div>
+      </nav>
+      
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Progress Indicator */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-4">
@@ -323,6 +338,7 @@ export default function FamilyTree() {
           >
             Continue to Risk Analysis
           </Button>
+        </div>
         </div>
       </div>
     </div>

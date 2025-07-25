@@ -11,6 +11,7 @@ import RiskCharts from "@/components/risk-charts";
 import AIRiskAnalysis from "@/components/ai-risk-analysis";
 import { useColorBlindStyles } from "@/hooks/use-color-blind-styles";
 import { Shield, Activity, Globe, BarChart3, Brain, TrendingUp } from "lucide-react";
+import Logo from "@/components/logo";
 
 export default function RiskAnalysis() {
   const [, setLocation] = useLocation();
@@ -81,8 +82,22 @@ export default function RiskAnalysis() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50">
+      {/* Navigation Header */}
+      <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-2">
+              <Logo />
+              <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+            </div>
+            <div className="text-sm text-slate-600">Risk Analysis</div>
+          </div>
+        </div>
+      </nav>
+      
+      <div className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Progress Indicator */}
         <div className="mb-12">
           <div className="flex items-center justify-between mb-4">
@@ -291,6 +306,7 @@ export default function RiskAnalysis() {
           >
             View Recommendations
           </Button>
+        </div>
         </div>
       </div>
     </div>

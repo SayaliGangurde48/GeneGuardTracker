@@ -22,6 +22,7 @@ import {
   EyeOff,
   AlertTriangle
 } from "lucide-react";
+import Logo from "@/components/logo";
 
 export default function Settings() {
   const [, setLocation] = useLocation();
@@ -129,8 +130,22 @@ export default function Settings() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50">
+      {/* Navigation Header */}
+      <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-2">
+              <Logo />
+              <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+            </div>
+            <div className="text-sm text-slate-600">Settings</div>
+          </div>
+        </div>
+      </nav>
+      
+      <div className="py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Settings</h2>
           <p className="text-slate-600">Manage your account preferences and privacy settings.</p>
@@ -389,6 +404,7 @@ export default function Settings() {
           >
             {updateUserMutation.isPending ? 'Saving...' : 'Save All Changes'}
           </Button>
+        </div>
         </div>
       </div>
     </div>

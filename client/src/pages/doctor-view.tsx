@@ -18,6 +18,7 @@ import {
   Activity
 } from "lucide-react";
 import { QRCodeSVG } from 'qrcode.react';
+import Logo from "@/components/logo";
 
 export default function DoctorView() {
   const [match, params] = useRoute("/doctor-view/:passportId?");
@@ -31,8 +32,22 @@ export default function DoctorView() {
 
   if (!passportId) {
     return (
-      <div className="min-h-screen bg-slate-50 py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-slate-50">
+        {/* Navigation Header */}
+        <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center space-x-2">
+                <Logo />
+                <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+              </div>
+              <div className="text-sm text-slate-600">Doctor Portal</div>
+            </div>
+          </div>
+        </nav>
+        
+        <div className="py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="text-center py-12">
             <CardContent>
               <QrCode className="w-16 h-16 mx-auto mb-4 text-slate-400" />
@@ -56,6 +71,7 @@ export default function DoctorView() {
               </div>
             </CardContent>
           </Card>
+          </div>
         </div>
       </div>
     );
@@ -63,14 +79,29 @@ export default function DoctorView() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-slate-50 py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-slate-50">
+        {/* Navigation Header */}
+        <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center space-x-2">
+                <Logo />
+                <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+              </div>
+              <div className="text-sm text-slate-600">Doctor Portal</div>
+            </div>
+          </div>
+        </nav>
+        
+        <div className="py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card>
             <CardContent className="p-12 text-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-health-primary mx-auto mb-4"></div>
               <p className="text-slate-600">Loading patient health passport...</p>
             </CardContent>
           </Card>
+          </div>
         </div>
       </div>
     );
@@ -78,8 +109,22 @@ export default function DoctorView() {
 
   if (error || !passportData) {
     return (
-      <div className="min-h-screen bg-slate-50 py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-slate-50">
+        {/* Navigation Header */}
+        <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center space-x-2">
+                <Logo />
+                <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+              </div>
+              <div className="text-sm text-slate-600">Doctor Portal</div>
+            </div>
+          </div>
+        </nav>
+        
+        <div className="py-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="text-center py-12">
             <CardContent>
               <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-red-500" />
@@ -90,6 +135,7 @@ export default function DoctorView() {
               </Button>
             </CardContent>
           </Card>
+          </div>
         </div>
       </div>
     );
@@ -101,8 +147,22 @@ export default function DoctorView() {
   const priorityRecommendations = recommendations.filter((r: any) => r.priority === 'high' && !r.completed);
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50">
+      {/* Navigation Header */}
+      <nav className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center space-x-2">
+              <Logo />
+              <span className="text-xl font-bold text-slate-900">GeneGuard</span>
+            </div>
+            <div className="text-sm text-slate-600">Doctor Portal - {user?.name}</div>
+          </div>
+        </div>
+      </nav>
+      
+      <div className="py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -382,6 +442,7 @@ export default function DoctorView() {
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   );
