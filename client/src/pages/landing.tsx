@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
-import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap } from "lucide-react";
-import DiseaseChart from "@/components/disease-chart";
+import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap, Newspaper } from "lucide-react";
+import DiseaseNewsFeed from "@/components/disease-news-feed";
 import AIchatbot from "@/components/ai-chatbot";
 
 export default function Landing() {
@@ -137,30 +137,30 @@ export default function Landing() {
             </div>
             
             <div className="relative">
-              {/* Disease Chart Card */}
+              {/* Disease News Feed Card */}
               <div className="bg-white rounded-2xl shadow-2xl p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm font-medium text-slate-700">Risk Overview</span>
+                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <span className="text-sm font-medium text-slate-700">Live Updates</span>
                   </div>
                   <Badge variant="outline" className="text-xs">
-                    8 conditions
+                    Health News
                   </Badge>
                 </div>
                 
                 <h3 className="font-semibold text-gray-900 flex items-center space-x-2 mb-4">
-                  <BarChart3 className="w-4 h-4" />
-                  <span>Disease Risk Chart</span>
+                  <Newspaper className="w-4 h-4" />
+                  <span>Disease News Feed</span>
                 </h3>
                 
-                <DiseaseChart compact={true} />
+                <DiseaseNewsFeed compact={true} />
                 
                 <div className="mt-4 flex items-center space-x-2 text-sm text-slate-600">
-                  <Activity className="w-4 h-4 text-emerald-600" />
-                  <span>Health Risks</span>
+                  <Newspaper className="w-4 h-4 text-emerald-600" />
+                  <span>Health Updates</span>
                   <span className="text-slate-400">•</span>
-                  <span>8 conditions analyzed</span>
+                  <span>Live feed</span>
                 </div>
               </div>
             </div>
