@@ -3,8 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
 import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap } from "lucide-react";
-import PedigreeChart from "@/components/pedigree-chart";
-import { ColorBlindToggle } from "@/components/color-blind-toggle";
+import DiseaseChart from "@/components/disease-chart";
+import AIchatbot from "@/components/ai-chatbot";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
@@ -137,30 +137,30 @@ export default function Landing() {
             </div>
             
             <div className="relative">
-              {/* Family Tree Preview Card */}
+              {/* Disease Chart Card */}
               <div className="bg-white rounded-2xl shadow-2xl p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-sm font-medium text-slate-700">Low Risk</span>
+                    <span className="text-sm font-medium text-slate-700">Risk Overview</span>
                   </div>
                   <Badge variant="outline" className="text-xs">
-                    8 members
+                    8 conditions
                   </Badge>
                 </div>
                 
                 <h3 className="font-semibold text-gray-900 flex items-center space-x-2 mb-4">
-                  <Users className="w-4 h-4" />
-                  <span>Family Tree Preview</span>
+                  <BarChart3 className="w-4 h-4" />
+                  <span>Disease Risk Chart</span>
                 </h3>
                 
-                <PedigreeChart compact={true} />
+                <DiseaseChart compact={true} />
                 
                 <div className="mt-4 flex items-center space-x-2 text-sm text-slate-600">
-                  <Users className="w-4 h-4 text-emerald-600" />
-                  <span>Family Tree</span>
+                  <Activity className="w-4 h-4 text-emerald-600" />
+                  <span>Health Risks</span>
                   <span className="text-slate-400">•</span>
-                  <span>8 members analyzed</span>
+                  <span>8 conditions analyzed</span>
                 </div>
               </div>
             </div>
@@ -279,10 +279,8 @@ export default function Landing() {
         </div>
       </footer>
 
-      {/* Color Blind Mode Toggle */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <ColorBlindToggle />
-      </div>
+      {/* AI Chat Button */}
+      <AIchatbot />
     </div>
   );
 }

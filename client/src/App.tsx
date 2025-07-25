@@ -47,7 +47,9 @@ function App() {
                 <Router />
               </main>
               <AIchatbot />
-              <ColorBlindToggle />
+              <div className="fixed bottom-6 left-6 z-50">
+                <ColorBlindToggle />
+              </div>
               <Toaster />
             </div>
           </TooltipProvider>
