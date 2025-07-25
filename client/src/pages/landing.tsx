@@ -7,6 +7,7 @@ import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircl
 import DiseaseNewsFeed from "@/components/disease-news-feed";
 import AIchatbot from "@/components/ai-chatbot";
 
+
 export default function Landing() {
   const [, setLocation] = useLocation();
   const { language, setLanguage, t } = useI18n();
@@ -64,11 +65,27 @@ export default function Landing() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img 
-                src="/attached_assets/GeneguardLOGO_1753431485957.png" 
-                alt="GeneGuard Logo" 
-                className="w-8 h-8 object-contain"
-              />
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-emerald-500 via-teal-500 to-blue-500 shadow-lg">
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                  {/* Shield outline */}
+                  <path d="M12 2L4 6V10C4 16 7.36 21.09 12 22C16.64 21.09 20 16 20 10V6L12 2Z" 
+                        stroke="white" strokeWidth="1.5" fill="rgba(255,255,255,0.1)"/>
+                  {/* DNA Helix */}
+                  <path d="M9 8C9 8 10.5 9.5 12 8C13.5 6.5 15 8 15 8" 
+                        stroke="white" strokeWidth="1.2" fill="none"/>
+                  <path d="M9 12C9 12 10.5 10.5 12 12C13.5 13.5 15 12 15 12" 
+                        stroke="white" strokeWidth="1.2" fill="none"/>
+                  <path d="M9 16C9 16 10.5 17.5 12 16C13.5 14.5 15 16 15 16" 
+                        stroke="white" strokeWidth="1.2" fill="none"/>
+                  {/* DNA Base pairs */}
+                  <circle cx="10" cy="8" r="0.8" fill="white"/>
+                  <circle cx="14" cy="8" r="0.8" fill="white"/>
+                  <circle cx="10" cy="12" r="0.8" fill="white"/>
+                  <circle cx="14" cy="12" r="0.8" fill="white"/>
+                  <circle cx="10" cy="16" r="0.8" fill="white"/>
+                  <circle cx="14" cy="16" r="0.8" fill="white"/>
+                </svg>
+              </div>
               <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
             
