@@ -2,12 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLocation } from "wouter";
+import { useI18n } from "@/lib/i18n";
 import { Shield, Users, BarChart3, FileText, Activity, MessageCircle, CheckCircle, Lock, Zap, Newspaper } from "lucide-react";
 import DiseaseNewsFeed from "@/components/disease-news-feed";
 import AIchatbot from "@/components/ai-chatbot";
 
 export default function Landing() {
   const [, setLocation] = useLocation();
+  const { language, setLanguage, t } = useI18n();
 
   const features = [
     {
@@ -62,29 +64,36 @@ export default function Landing() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
+              <img 
+                src="/attached_assets/GeneguardLOGO_1753431485957.png" 
+                alt="GeneGuard Logo" 
+                className="w-8 h-8 object-contain"
+              />
               <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
             
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => setLocation("/")} className="text-slate-700 hover:text-emerald-600 font-medium">Home</button>
+              <button onClick={() => setLocation("/")} className="text-slate-700 hover:text-emerald-600 font-medium">{t("nav.home")}</button>
               <button onClick={() => setLocation("/profile-setup")} className="text-slate-700 hover:text-emerald-600 font-medium">Profile</button>
-              <button onClick={() => setLocation("/family-tree")} className="text-slate-700 hover:text-emerald-600 font-medium">Family Tree</button>
-              <button onClick={() => setLocation("/risk-analysis")} className="text-slate-700 hover:text-emerald-600 font-medium">Risk Analysis</button>
+              <button onClick={() => setLocation("/family-tree")} className="text-slate-700 hover:text-emerald-600 font-medium">{t("nav.familyTree")}</button>
+              <button onClick={() => setLocation("/risk-analysis")} className="text-slate-700 hover:text-emerald-600 font-medium">{t("nav.riskAnalysis")}</button>
               <button onClick={() => setLocation("/recommendations")} className="text-slate-700 hover:text-emerald-600 font-medium">Recommendations</button>
-              <button onClick={() => setLocation("/health-passport")} className="text-slate-700 hover:text-emerald-600 font-medium">Health Passport</button>
-              <button onClick={() => setLocation("/settings")} className="text-slate-700 hover:text-emerald-600 font-medium">Settings</button>
+              <button onClick={() => setLocation("/health-passport")} className="text-slate-700 hover:text-emerald-600 font-medium">{t("nav.healthPassport")}</button>
+              <button onClick={() => setLocation("/settings")} className="text-slate-700 hover:text-emerald-600 font-medium">{t("nav.settings")}</button>
             </div>
             
             {/* Language Selector */}
             <div className="flex items-center space-x-4">
-              <select className="text-sm bg-transparent border-none text-slate-700">
-                <option>English</option>
-                <option>Hindi</option>
-                <option>Bengali</option>
+              <select 
+                className="text-sm bg-transparent border-none text-slate-700 cursor-pointer"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+              >
+                <option value="en">🇺🇸 English</option>
+                <option value="hi">🇮🇳 हिंदी</option>
+                <option value="mr">🇮🇳 मराठी</option>
+                <option value="bn">🇧🇩 বাংলা</option>
               </select>
             </div>
           </div>
@@ -98,30 +107,25 @@ export default function Landing() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                  Track Genetic Risks.<br />
-                  <span className="text-emerald-100">Empower Preventive Health.</span>
+                  {t("landing.heroTitle")}<br />
+                  <span className="text-emerald-100">{t("landing.heroSubtitle")}</span>
                 </h1>
                 <p className="text-xl text-white/90 max-w-lg leading-relaxed">
-                  Build your family medical history, assess genetic risks using AI, and receive personalized health insights to stay ahead of potential health issues.
+                  {t("landing.heroDescription")}
                 </p>
               </div>
               
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* Action Button */}
+              <div className="flex justify-start">
                 <Button 
                   size="lg"
-                  className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold px-8"
+                  className="bg-white text-emerald-600 hover:bg-emerald-50 font-semibold px-12 py-4 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                   onClick={() => setLocation("/profile-setup")}
                 >
-                  Get Started Free
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 font-semibold bg-transparent"
-                  onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
-                >
-                  Watch Demo
+                  {t("landing.getStarted")}
+                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </Button>
               </div>
 

@@ -99,6 +99,31 @@ const translations = {
     "common.success": "सफलता",
   },
   
+  mr: {
+    // Navigation
+    "nav.home": "मुख्यपृष्ठ",
+    "nav.familyTree": "कौटुंबिक वृक्ष",
+    "nav.riskAnalysis": "जोखीम विश्लेषण",
+    "nav.healthPassport": "आरोग्य पासपोर्ट",
+    "nav.settings": "सेटिंग्ज",
+    
+    // Landing page
+    "landing.heroTitle": "आनुवंशिक जोखीम ट्रॅक करा।",
+    "landing.heroSubtitle": "प्रतिबंधक आरोग्यास सक्षम करा।",
+    "landing.heroDescription": "तुमचा कौटुंबिक वैद्यकीय इतिहास तयार करा, AI वापरून आनुवंशिक जोखमींचे मूल्यांकन करा, आणि संभाव्य आरोग्य समस्यांपूर्वी वैयक्तिक आरोग्य अंतर्दृष्टी मिळवा।",
+    "landing.getStarted": "विनामूल्य सुरू करा",
+    "landing.watchDemo": "डेमो पहा",
+    
+    // Common
+    "common.back": "मागे",
+    "common.continue": "पुढे चला",
+    "common.save": "जतन करा",
+    "common.cancel": "रद्द करा",
+    "common.loading": "लोड होत आहे...",
+    "common.error": "एक त्रुटी उद्भवली",
+    "common.success": "यशस्वी",
+  },
+  
   bn: {
     // Navigation
     "nav.home": "হোম",
