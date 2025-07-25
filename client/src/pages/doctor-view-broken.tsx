@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { useRoute } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { 
   User, 
   Calendar, 
@@ -35,6 +37,7 @@ export default function DoctorView() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
+                
                 <span className="text-xl font-bold text-slate-900">GeneGuard</span>
               </div>
               <div className="text-sm text-slate-600">Doctor Portal</div>
@@ -81,6 +84,7 @@ export default function DoctorView() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
+                
                 <span className="text-xl font-bold text-slate-900">GeneGuard</span>
               </div>
               <div className="text-sm text-slate-600">Doctor Portal</div>
@@ -110,6 +114,7 @@ export default function DoctorView() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-2">
+                
                 <span className="text-xl font-bold text-slate-900">GeneGuard</span>
               </div>
               <div className="text-sm text-slate-600">Doctor Portal</div>
@@ -137,8 +142,8 @@ export default function DoctorView() {
 
   const { passport, user, familyMembers = [], riskAssessments = [], recommendations = [] } = passportData || {};
 
-  const highRiskConditions = (riskAssessments as any[]).filter((r: any) => r.riskLevel === 'high');
-  const priorityRecommendations = (recommendations as any[]).filter((r: any) => r.priority === 'high' && !r.completed);
+  const highRiskConditions = riskAssessments.filter((r: any) => r.riskLevel === 'high');
+  const priorityRecommendations = recommendations.filter((r: any) => r.priority === 'high' && !r.completed);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -147,9 +152,10 @@ export default function DoctorView() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
+              
               <span className="text-xl font-bold text-slate-900">GeneGuard</span>
             </div>
-            <div className="text-sm text-slate-600">Doctor Portal - {(user as any)?.name}</div>
+            <div className="text-sm text-slate-600">Doctor Portal - {user?.name}</div>
           </div>
         </div>
       </nav>
@@ -182,19 +188,19 @@ export default function DoctorView() {
                     <User className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-slate-900">{(user as any)?.name}</h2>
+                    <h2 className="text-2xl font-bold text-slate-900">{user?.name}</h2>
                     <div className="flex items-center space-x-4 text-slate-600 mt-1">
-                      <span>{(user as any)?.gender?.charAt(0).toUpperCase() + (user as any)?.gender?.slice(1)}</span>
+                      <span>{user?.gender?.charAt(0).toUpperCase() + user?.gender?.slice(1)}</span>
                       <span>•</span>
-                      <span>{(user as any)?.age} years old</span>
+                      <span>{user?.age} years old</span>
                       <span>•</span>
-                      <span>ID: {(user as any)?.id}</span>
+                      <span>ID: {user?.id}</span>
                     </div>
                     <div className="mt-3">
                       <h3 className="font-medium text-slate-900 mb-2">Current Medical Conditions</h3>
                       <div className="flex flex-wrap gap-2">
-                        {(user as any)?.medicalConditions?.length > 0 ? (
-                          (user as any).medicalConditions.map((condition: string, index: number) => (
+                        {user?.medicalConditions?.length > 0 ? (
+                          user.medicalConditions.map((condition: string, index: number) => (
                             <Badge key={index} className="bg-red-100 text-red-800 border-red-300">
                               {condition}
                             </Badge>
@@ -210,7 +216,7 @@ export default function DoctorView() {
               <div className="lg:col-span-1">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-health-primary mb-2">
-                    {Math.round((riskAssessments as any[]).reduce((sum: number, r: any) => sum + r.riskScore, 0) / (riskAssessments as any[]).length) || 0}%
+                    {Math.round(riskAssessments.reduce((sum: number, r: any) => sum + r.riskScore, 0) / riskAssessments.length) || 0}%
                   </div>
                   <div className="text-sm text-slate-600 mb-4">Overall Risk Score</div>
                   <Badge className={`${
@@ -262,9 +268,9 @@ export default function DoctorView() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {(familyMembers as any[]).length > 0 ? (
+            {familyMembers.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {(familyMembers as any[]).map((member: any) => (
+                {familyMembers.map((member: any) => (
                   <div key={member.id} className="bg-slate-50 p-4 rounded-lg">
                     <div className="flex justify-between items-start mb-2">
                       <div>
@@ -356,21 +362,21 @@ export default function DoctorView() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-4 bg-slate-50 rounded-lg">
                 <div className="text-2xl font-bold text-health-primary mb-2">
-                  {(user as any)?.lifestyle?.exerciseLevel?.charAt(0).toUpperCase() + (user as any)?.lifestyle?.exerciseLevel?.slice(1) || 'N/A'}
+                  {user?.lifestyle?.exerciseLevel?.charAt(0).toUpperCase() + user?.lifestyle?.exerciseLevel?.slice(1) || 'N/A'}
                 </div>
                 <div className="text-sm text-slate-600">Exercise Level</div>
               </div>
               <div className="text-center p-4 bg-slate-50 rounded-lg">
                 <div className="text-2xl font-bold text-health-secondary mb-2">
-                  {(user as any)?.lifestyle?.smokingStatus === 'never' ? 'Never' :
-                   (user as any)?.lifestyle?.smokingStatus === 'former' ? 'Former' :
-                   (user as any)?.lifestyle?.smokingStatus === 'current' ? 'Current' : 'N/A'}
+                  {user?.lifestyle?.smokingStatus === 'never' ? 'Never' :
+                   user?.lifestyle?.smokingStatus === 'former' ? 'Former' :
+                   user?.lifestyle?.smokingStatus === 'current' ? 'Current' : 'N/A'}
                 </div>
                 <div className="text-sm text-slate-600">Smoking History</div>
               </div>
               <div className="text-center p-4 bg-slate-50 rounded-lg">
                 <div className="text-2xl font-bold text-health-accent mb-2">
-                  {(user as any)?.lifestyle?.dietType?.charAt(0).toUpperCase() + (user as any)?.lifestyle?.dietType?.slice(1) || 'N/A'}
+                  {user?.lifestyle?.dietType?.charAt(0).toUpperCase() + user?.lifestyle?.dietType?.slice(1) || 'N/A'}
                 </div>
                 <div className="text-sm text-slate-600">Diet Type</div>
               </div>
