@@ -1,36 +1,34 @@
-# 🧬 GeneGuard
-
-> **Predict. Plan. Protect.**
-
 <table>
   <tr>
     <td width="150" valign="middle">
-      <img src="assets/GeneguardLOGO.png" alt="GeneGuard Logo" width="120" />
+      <img src="GeneguardLOGO.png" alt="GeneGuard Logo" width="120" />
     </td>
     <td valign="middle">
-      <h1>GeneGuard</h1>
+      <h1>🧬 GeneGuard</h1>
       <p><strong>Predict. Plan. Protect.</strong></p>
+      <img src="https://media1.giphy.com/media/BRL6dbUHLBDG47zYQj/giphy.gif" alt="DNA Animation" width="100%" />
     </td>
   </tr>
 </table>
 
-<p align="center">
-  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXZyYnJpZzJ2ZXJ2ZG5oYXJnZmVvenI1aGJmM2RzZDZ6czNuYTd2NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BRL6dbUHLBDG47zYQj/giphy.gif" alt="DNA GIF" width="100%" />
-</p>
+---
+
+## 🌟 About GeneGuard
+
+**GeneGuard** is a smart, AI-powered health-tech platform that empowers individuals to understand their genetic disease risks and take proactive measures before symptoms appear.
+
+It combines advanced AI models with multi-generational family history to:
+
+- 🧠 **Predict** potential genetic health risks before they manifest.
+- 📝 **Plan** appropriate health screenings and interventions.
+- 🛡️ **Protect** your future with personalized preventive care.
+
+GeneGuard is especially valuable in regions with limited access to specialists, bringing early-warning capabilities and decision support right to your fingertips.
+
+> Your genes don’t define you — but understanding them can empower you.
 
 ---
 
-### 🌟 About GeneGuard
-
-**GeneGuard** is an intelligent AI-driven health-tech platform built to revolutionize how individuals assess and manage their genetic health risks.
-
-By combining **AI** with **multi-generational family history**, GeneGuard empowers users to:
-
-- 🔍 **Predict** their genetic disease risks
-- 🧭 **Plan** actionable steps with tailored recommendations
-- 🛡️ **Protect** their future health with early intervention
-
-> Especially helpful in underserved or remote areas with limited access to genetic specialists.
 
 ---
 
@@ -42,25 +40,3 @@ By combining **AI** with **multi-generational family history**, GeneGuard empowe
 - 👨‍👩‍👧 Track family medical history
 - 🔒 Secure & encrypted data handling
 
----
-
-### 🛠️ API Endpoint – `POST /api/predict-risk`
-
-Use this endpoint to predict health risks based on personal and family data.
-
-#### 📥 Request Example:
-
-```json
-{
-  "userId": "123456",
-  "age": 35,
-  "gender": "female",
-  "familyHistory": {
-    "diabetes": true,
-    "heartDisease": false
-  },
-  "lifestyle": {
-    "smoking": false,
-    "exercise": "regular"
-  }
-}
