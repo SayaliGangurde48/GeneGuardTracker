@@ -58,12 +58,14 @@ This platform is designed to bridge the health awareness gap, especially in **ru
 
 ---
 
-## 🌍 Live Deployment
+### 🌐 Live Prototype Deployment
 
-> 🧪 Prototype Live Now:  
-🌐 [https://gene-guard-tracker.replit.app/](https://gene-guard-tracker.replit.app/)
+🔗 **[Click to Visit the Live Prototype](https://gene-guard-tracker.replit.app/)**  
+Explore the working version of **GeneGuard** – our AI-powered hereditary health risk predictor and family health tracker.
 
----
+> 📍 Built with HTML, CSS, JS, Node.js, Express, and AI logic (Python)  
+> 🚀 Hosted for fast testing and public access
+
 
 ## 🧠 Future Scope
 
