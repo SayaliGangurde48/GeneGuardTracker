@@ -51,8 +51,9 @@ This platform is designed to bridge the health awareness gap, especially in **ru
 
 ![DNA Animation](GIFDNA.gif)
 
-> 📽️ **Video Walkthrough (YouTube)**: *Coming Soon – stay tuned!*
+## 🎥 Demo Video
 
+▶️ [Watch on YouTube](https://youtu.be/dQIvo1K_oVc?feature=shared)
 > **📊 Presentation PPT**: [Click Here to View](https://drive.google.com/file/d/1nzOwKxOFB4JUnB3_fDTSGVSBhHyOsfd3/view?usp=sharing)
 
 
