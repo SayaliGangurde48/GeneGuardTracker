@@ -53,7 +53,8 @@ This platform is designed to bridge the health awareness gap, especially in **ru
 
 > 📽️ **Video Walkthrough (YouTube)**: *Coming Soon – stay tuned!*
 
-> 📊 **Presentation PPT**: [Click Here to View] (https://drive.google.com/file/d/1nzOwKxOFB4JUnB3_fDTSGVSBhHyOsfd3/view?usp=sharing)
+> **📊 Presentation PPT**: [Click Here to View](https://drive.google.com/file/d/1nzOwKxOFB4JUnB3_fDTSGVSBhHyOsfd3/view?usp=sharing)
+
 
 ---
 
